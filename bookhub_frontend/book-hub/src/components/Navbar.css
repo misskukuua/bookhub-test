@@ -1,0 +1,33 @@
+/* Navbar.css */
+.navbar {
+  background-color: #450336;;
+  padding: 1rem;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 3rem; /* Increased gap for wider spacing */
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.nav-item:hover {
+  color: #DAF7A6;
+}

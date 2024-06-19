@@ -1,0 +1,80 @@
+/* HomePage.css */
+
+.homepage {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover; /* Ensure the background image covers the entire div */
+  background-position: center; /* Center the background image */
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column; /* Ensure content is stacked vertically */
+  align-items: center;
+  max-width: 1200px; /* Max width for the content */
+  margin: 0 auto; /* Center align content horizontally */
+}
+
+.text-buttons {
+  flex: 1;
+  padding: 20px;
+  color: white;
+  text-align: center; /* Center align text */
+  margin-bottom: 40px; /* Space between h1 and buttons */
+  font-family: 'Times New Roman', Times, serif;
+  font-size: larger;
+}
+
+.my-book-hub {
+  color: #DAF7A6; /* Make only the text "MyBookHub" a different color */
+  animation: bounceText 1s ease-in-out infinite; /* Apply animation to bounce text */
+}
+
+@keyframes bounceText {
+  0%, 100% {
+    transform: scale(1); /* Start and end with normal size */
+  }
+  50% {
+    transform: scale(1.1); /* Bounce to 110% of normal size */
+  }
+}
+
+.content-wrapper {
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent black background for readability */
+  padding: 20px;
+  border-radius: 10px; /* Optional: rounded corners for the text container */
+}
+
+.my-book-hub {
+  font-weight: bold;
+  color: #ffcc00; /* Optional: different color for the MyBookHub text */
+}
+
+p {
+  font-size: larger;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  color: #fff;
+}
+
+.newtrends {
+  font-size: 1.95em;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+  position: absolute;
+  top: 100px; /* Adjust the top position as needed */
+  left: 25%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for center alignment */
+  animation: bounceText 1s ease-in-out infinite; /* Apply bounce animation */
+}
+
+@keyframes bounceText {
+  0%, 100% {
+    transform: translateY(0); /* Start and end with normal position */
+  }
+  50% {
+    transform: translateY(-20px); /* Bounce up 20px */
+  }
+}

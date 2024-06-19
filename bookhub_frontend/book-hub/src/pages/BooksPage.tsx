@@ -1,15 +1,26 @@
 // src/pages/BooksPage.tsx
 
 import React, { useState, useEffect } from 'react';
+import BooksList from '../components/BooksList';
+import BookDetail from '../components/BookDetail'; // Import BookDetail component
 import Filtering from '../components/Filtering';
 import SearchForm from '../components/SearchForm';
 import './BooksPage.css'; // Import CSS for styling
 
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+  genre: string;
+  publicationDate: string;
+}
+
 const BooksPage: React.FC = () => {
-  const [books, setBooks] = useState<any[]>([]); // State for storing books data
-  const [filteredBooks, setFilteredBooks] = useState<any[]>([]); // State for filtered books
+  const [books, setBooks] = useState<Book[]>([]); // State for storing books data
+  const [filteredBooks, setFilteredBooks] = useState<Book[]>([]); // State for filtered books
   const [searchTerm, setSearchTerm] = useState<string>(''); // State for search term
-  const [filters, setFilters] = useState<any>({ genre: '', author: '', publicationDate: '' }); // State for filters
+  const [filters, setFilters] = useState<{ genre: string; author: string; publicationDate: string }>({ genre: '', author: '', publicationDate: '' }); // State for filters
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null); // State for selected book
 
   // Example function to fetch books data (replace with your actual data fetching logic)
   const fetchBooks = async () => {
@@ -68,7 +79,7 @@ const BooksPage: React.FC = () => {
   // Handle filter change
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFilters((prevFilters: any) => ({
+    setFilters(prevFilters => ({
       ...prevFilters,
       [name]: value
     }));
@@ -79,6 +90,11 @@ const BooksPage: React.FC = () => {
   const handleClearFilters = () => {
     setFilters({ genre: '', author: '', publicationDate: '' });
     setFilteredBooks(books);
+  };
+
+  // Handle book selection
+  const handleBookSelect = (book: Book) => {
+    setSelectedBook(book);
   };
 
   return (
@@ -97,16 +113,9 @@ const BooksPage: React.FC = () => {
         onFilterChange={handleFilterChange}
         onClearFilters={handleClearFilters}
       />
-      <div className="books-list">
-        {filteredBooks.map(book => (
-          <div key={book.id} className="book-item">
-            <h2>{book.title}</h2>
-            <p>Author: {book.author}</p>
-            <p>Genre: {book.genre}</p>
-            <p>Publication Date: {book.publicationDate}</p>
-            {/* Add additional book details as needed */}
-          </div>
-        ))}
+      <div className="books-container">
+        <BooksList books={filteredBooks} onBookSelect={handleBookSelect} />
+        {selectedBook && <BookDetail book={selectedBook} />} {/* Conditional rendering */}
       </div>
     </div>
   );

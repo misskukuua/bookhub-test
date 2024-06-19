@@ -1,0 +1,30 @@
+/* src/components/SearchForm.css */
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .search-form input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    margin-right: 10px;
+    background-color: #510850; /* Light gray background */
+    border: none; /* Gray border */
+    color: #ffffff; /* Dark text color */
+    cursor: pointer;
+  }
+  
+  .search-form button {
+    padding: 10px;
+    background-color: #510850; /* Pink background */
+    border: none;
+    color: #bcb8bc; /* White text */
+    cursor: pointer;
+  }
+  
+  .search-form input::placeholder {
+    color: #bcb8bc; 
+    opacity: 0.9; 
+  }

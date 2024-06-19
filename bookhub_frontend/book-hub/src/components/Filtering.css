@@ -1,0 +1,33 @@
+/* src/components/Filtering.css */
+
+.filter-fields {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .filter-fields input {
+    padding: 10px;
+    width: 200px;
+    margin-right: 10px;
+    background-color: #eaa4e8; /* Light gray background */
+    border: none; /* Gray border */
+    color: #4e0c0c; /* Dark text color */
+    cursor: pointer;
+  }
+  
+  .filter-fields button {
+    padding: 10px;
+    background-color: #510850; /* Pink background */
+    border: none;
+    color:  #bcb8bc;  /* White text */
+    cursor: pointer;
+  }
+  
+  /* Style the placeholder text */
+  .filter-fields input::placeholder {
+    color: #510850; 
+    opacity: 0.9; 
+
+  }
+  

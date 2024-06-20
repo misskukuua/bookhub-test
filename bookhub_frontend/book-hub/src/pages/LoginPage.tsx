@@ -22,7 +22,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="login-page">
-      <h1>Welcome to MyBookHub!</h1>
+      <h1>Hi, Welcome to MyBookHub!</h1>
       <p>Please log in to proceed</p>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>

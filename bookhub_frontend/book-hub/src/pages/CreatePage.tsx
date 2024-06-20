@@ -2,11 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { getBooks, createBook, updateBook, deleteBook } from '../api';
 import { Container, TextField, Button, Typography, Grid, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
+import BookItem from '../components/BookItem';
+import './CreatePage.css';
 
 const BooksManager: React.FC = () => {
   const [books, setBooks] = useState<any[]>([]);
   const [newBookData, setNewBookData] = useState<any>({ title: '', author: '', genre: '', about: '', publicationDate: '' });
   const [selectedBook, setSelectedBook] = useState<any>(null);
+
+   // Define state for filters
+   const [filters, setFilters] = useState<{ publicationDate: string; genre: string; title: string; author: string }>({
+    publicationDate: '',
+    genre: '',
+    title: '',
+    author: '',
+  });
 
   useEffect(() => {
     fetchAllBooks();
@@ -21,6 +31,7 @@ const BooksManager: React.FC = () => {
     }
   };
 
+  
   const handleCreateBook = async () => {
     try {
       await createBook(newBookData); // Call API to create a new book
@@ -66,6 +77,31 @@ const BooksManager: React.FC = () => {
     setSelectedBook({ ...selectedBook, [name]: value });
   };
 
+  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, filterName: string) => {
+    const { value } = e.target;
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [filterName]: value,
+    }));
+  };
+
+  // Filter books based on current filters
+const filteredBooks = books.filter(book => {
+  return (
+    (filters.publicationDate === '' || book.publicationDate?.includes(filters.publicationDate)) &&
+    (filters.genre === '' || book.genre.toLowerCase().includes(filters.genre.toLowerCase())) &&
+    (filters.title === '' || book.title.toLowerCase().includes(filters.title.toLowerCase())) &&
+    (filters.author === '' || book.author.toLowerCase().includes(filters.author.toLowerCase()))
+  );
+});
+
+
+const applyFilters = (_event: React.MouseEvent<HTMLButtonElement>) => {
+  // Your filter logic goes here
+  console.log('Applying filters...');
+};
+
+
   return (
     <Container>
       <Typography variant="h2" gutterBottom color={"purple"} textAlign={"center"}>Books Manager</Typography>
@@ -101,6 +137,7 @@ const BooksManager: React.FC = () => {
         </Grid>
       </Grid>
 
+      {/* update books */}
       {selectedBook && (
         <>
           <Typography variant="h5" gutterBottom color={"purple"} marginTop={"50px"}>Update a Book</Typography>
@@ -132,6 +169,27 @@ const BooksManager: React.FC = () => {
         </>
       )}
 
+      {/* filter books */}
+      <Typography variant="h5" gutterBottom color={"purple"} marginTop={"50px"}>Book Filter</Typography>
+      <Grid container spacing={2}>
+      <Grid item xs={12} sm={3}>
+          <TextField fullWidth label="Title" value={filters.title} onChange={(e) => handleFilterChange(e, 'title')} sx={{ '& .MuiInputLabel-root': { color: 'purple' } }}/>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <TextField fullWidth label="Author" value={filters.author} onChange={(e) => handleFilterChange(e, 'author')} sx={{ '& .MuiInputLabel-root': { color: 'purple' } }}/>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <TextField fullWidth label="Genre" value={filters.genre} onChange={(e) => handleFilterChange(e, 'genre')} sx={{ '& .MuiInputLabel-root': { color: 'purple' } }}/>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <TextField fullWidth label="Publication Date" value={filters.publicationDate} onChange={(e) => handleFilterChange(e, 'publicationDate')} sx={{ '& .MuiInputLabel-root': { color: 'purple' } }}/>
+        </Grid>
+        <Grid item xs={12} sm={12} style={{ textAlign: 'right' }}>
+    <Button variant="contained" onClick={applyFilters} sx={{ bgcolor: 'purple', color: 'white', '&:hover': { bgcolor: 'fuchsia' } }}>Apply Filters</Button>
+  </Grid>
+      </Grid>
+
+      {/* List books */}
       <Typography variant="h5" gutterBottom color={"purple"} marginTop={"50px"}>Book List</Typography>
       <List>
         {books.map(book => (
@@ -147,7 +205,14 @@ const BooksManager: React.FC = () => {
             </ListItemSecondaryAction>
           </ListItem>
         ))}
-      </List>
+      </List> 
+       {/* Filtered book list */}
+    <Typography variant="h5" gutterBottom color="purple" marginTop="50px">Filtered Book List</Typography>
+    <div className="books-list">
+      {filteredBooks.map(book => (
+        <BookItem key={book.id} book={book} />
+      ))}
+    </div>
     </Container>
   );
 };

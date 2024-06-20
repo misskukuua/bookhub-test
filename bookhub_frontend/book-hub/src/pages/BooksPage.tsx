@@ -114,7 +114,12 @@ const BooksPage: React.FC = () => {
         onClearFilters={handleClearFilters}
       />
       <div className="books-container">
-        <BooksList books={filteredBooks} onBookSelect={handleBookSelect} />
+        <BooksList books={filteredBooks} onBookSelect={handleBookSelect} filters={{
+          genre: '',
+          author: '',
+          publicationDate: '',
+          title: ''
+        }} />
         {selectedBook && <BookDetail book={selectedBook} />} {/* Conditional rendering */}
       </div>
     </div>

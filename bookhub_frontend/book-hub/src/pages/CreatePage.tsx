@@ -56,12 +56,12 @@ const BooksManager: React.FC = () => {
 
   const handleDeleteBook = async (bookId: string) => {
     try {
-      await deleteBook(bookId); // Pass the bookId directly
-      fetchAllBooks(); // Refresh the book list after deletion
+        await deleteBook(bookId); // Call the deleteBook function
+        fetchAllBooks(); // Refresh the book list after deletion
     } catch (error) {
-      console.error('Error deleting book:', error);
+        console.error('Error deleting book:', error);
     }
-  };
+};
 
   const handleSelectBook = (book: any) => {
     setSelectedBook(book); // Set selected book for update
@@ -105,7 +105,7 @@ const applyFilters = (_event: React.MouseEvent<HTMLButtonElement>) => {
   return (
     <Container>
       <Typography variant="h2" gutterBottom color={"purple"} textAlign={"center"}>Books Manager</Typography>
-      <Typography paragraph color={"black"}>
+      <Typography paragraph color={"black"} textAlign={"center"}>
         Welcome to the Books Manager application! <br></br>This application allows you to manage a collection of books. <br></br>You can
         create, update, and delete books using the form and buttons below. Enjoy exploring and managing your book collection!
       </Typography>

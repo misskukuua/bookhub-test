@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', createBook);
-router.delete('/', deleteBook);
+router.delete('/:id', deleteBook);
 router.put('/:id', updateBook);
 router.get('/:id', getBook);
 

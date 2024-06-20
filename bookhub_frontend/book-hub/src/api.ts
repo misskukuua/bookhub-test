@@ -59,12 +59,12 @@ export const updateBook = async (id: string, book: Book): Promise<Book | null> =
 };
 
 // Delete a book by ID
-export const deleteBook = async (id: string): Promise<Book | null> => {
+export const deleteBook = async (id: string): Promise<{ message: string } | null> => {
     try {
-        const response = await axios.post(`${API_URL}/${id}`);
+        const response = await axios.delete(`${API_URL}/${id}`);
         return response.data;
     } catch (error) {
-        console.error('Error creating book:', error);
+        console.error('Error deleting book:', error);
         return null;
     }
 };

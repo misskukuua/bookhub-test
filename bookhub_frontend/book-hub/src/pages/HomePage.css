@@ -17,14 +17,14 @@
   margin: 0 auto; /* Center align content horizontally */
 }
 
-.text-buttons {
+.text-buttons h1{
   flex: 1;
   padding: 20px;
   color: white;
   text-align: center; /* Center align text */
   margin-bottom: 40px; /* Space between h1 and buttons */
   font-family: 'Times New Roman', Times, serif;
-  font-size: larger;
+  font-size: 2rem;
 }
 
 .my-book-hub {
@@ -52,15 +52,15 @@
   color: #ffcc00; /* Optional: different color for the MyBookHub text */
 }
 
-p {
-  font-size: larger;
+.text-buttons p {
+  font-size: large;
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
   color: #fff;
 }
 
-.newtrends {
-  font-size: 1.95em;
+.newtrends h1{
+  font-size: 4em;
   color: #ffffff;
   font-family: 'Times New Roman', Times, serif;
   position: absolute;
@@ -78,3 +78,4 @@ p {
     transform: translateY(-20px); /* Bounce up 20px */
   }
 }
+

@@ -23,7 +23,7 @@ const SignupPage: React.FC = () => {
     <div className="signup-page">
       <h1>Join MyBookHub!</h1>
       <p className="description">
-        Be part of a global community of readers and writers, all connected through <br /> the power of story.
+        Be part of a global community of creators and create, all connected through <br /> the power of story.
       </p>
       <form className="signup-form" onSubmit={handleSubmit}>
         <label htmlFor="fullName">Full Name:</label>

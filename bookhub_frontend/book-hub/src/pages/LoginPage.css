@@ -1,0 +1,74 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    color:  #450336;
+    margin-bottom: 60px;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px; /* Increased margin bottom */
+  }
+  
+  .login-form {
+    width: 400px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid  #450336;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-form label,
+  .login-form input,
+  .login-form button {
+    display: block;
+    width: 95%;
+    margin-bottom: 10px;
+  }
+  
+  .login-form input,
+  .login-form button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid  #450336;
+    border-radius: 4px;
+  }
+  
+  .login-form button {
+    background-color:  #450336;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+  .login-form button:hover {
+    background-color:  #450336;
+  }
+  
+  .signup-link {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .signup-link a {
+    color:  #450336;
+    text-decoration: none;
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,6 +1,6 @@
 ## **Books Manager Application**
 
-### Welcome to the Books Manager application! This application allows you to manage a collection of books. You can create, update, and delete books using the form and buttons available. Additionally, you can filter the book list based on various criteria like title, author, genre, and publication date.
+Welcome to the Books Manager application! This application allows you to manage a collection of books. You can create, update, and delete books using the form and buttons available. Additionally, you can filter the book list based on various criteria like title, author, genre, and publication date.
 
 ## **Table of Contents**
 - [Installation](#installation)
